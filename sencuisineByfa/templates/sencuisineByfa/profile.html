@@ -1,0 +1,39 @@
+{% extends 'sencuisineByfa/header.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>{{ user_profile.user.username }}</h2>
+            <p>{{ user_profile.bio }}</p>
+            <p>{{ user_profile.location }}</p>
+        </div>
+        <div class="col-md-6">
+            {% if user_profile.image %}
+            <img src="{{ user_profile.image.url }}" alt="{{ user_profile.user.username }}" class="img-fluid" width="200" height="200">
+            {% else %}
+            <img src="{% static 'images/logo.png' %}" class="card-img-top" alt="Image par défaut">
+            {% endif %}
+         </div>
+    </div>
+</div>
+
+<form method="post" class="form-signin" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h2 class="form-signin-heading">Mise à jour des données</h2>
+    <div class="mb-3">
+        <label for="id_bio" class="form-label">Bio</label>
+        <textarea class="form-control" id="id_bio" name="bio">{{ user_profile.bio }}</textarea>
+    </div>
+    <div class="mb-3">
+        <label for="id_location" class="form-label">Location</label>
+        <input type="text" class="form-control" id="id_location" name="location" value="{{ user_profile.location }}">
+    </div>
+    <div class="mb-3">
+        <label for="id_image" class="form-label">Profile Image</label>
+        <input type="file" class="form-control" id="id_image" name="image">
+    </div>
+    <button type="submit" class="btn btn-primary">Save Profile</button>
+</form>
+
+{% endblock %}

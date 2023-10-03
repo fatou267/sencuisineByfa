@@ -1,0 +1,50 @@
+{% extends 'sencuisineByfa/header.html' %}
+{% block title %}
+   ajouter_recette
+{% endblock %}
+{% block content %}
+
+<form method="post" class="form-signin">
+    {% csrf_token %}
+    <h2 class="form-signin-heading">Ajouter une recette</h2>
+    <div class="form-group">
+        <label for="{{ form.nom.id_for_label }}" class="form-label">Nom de la recette</label>
+        <input type="text" id="{{ form.nom.id_for_label }}" class="form-control" placeholder="Email address" required autofocus name="{{ form.nom.name }}" value="{{ form.nom.value }}">
+
+    </div>
+    <div class="form-group">
+        <label for="{{ form.description.id_for_label }}" class="form-label">Description</label>
+        <input type="text" id="{{ form.description.id_for_label }}" class="form-control" placeholder="Email address" required autofocus name="{{ form.description.name }}" value="{{ form.description.value }}">
+    </div>
+    <div class="form-group">
+        <label for="{{ form.portions.id_for_label }}" class="form-label">Nombre de portions</label>
+        <input type="text" id="{{ form.portions.id_for_label }}" class="form-control" placeholder="Email address" required autofocus name="{{ form.portions.name }}" value="{{ form.portions.value }}">
+
+    </div>
+    <div class="form-group">
+        <label for="{{ form.utilisateur.id_for_label }}" class="form-label">Utilisateur</label>
+        <input type="text" id="{{ form.utilisateur.id_for_label }}" class="form-control" placeholder="Email address" required autofocus name="{{ form.utilisateur.name }}" value="{{ form.utilisateur.value }}">
+
+
+    </div>
+    <div class="form-group">
+        <label for="{{ form.ingredients.id_for_label }}" class="form-label">Ingrédients</label>
+        <!--<select multiple class="form-control" name="{{ form.ingredients.name }}">
+            {% for ingredient in form.ingredients.choices %}
+                <option value="{{ ingredient.0 }}">{{ ingredient.1 }}</option>
+            {% endfor %}
+        </select>-->
+        <input type="text" class="form-control mt-2" name="nouvel_ingredient" placeholder="Nouvel ingrédient">
+    </div>
+    <div class="form-group">
+        <label for="{{ form.specialites_culinaires.id_for_label }}" class="form-label">Spécialités culinaires</label>
+        <!--<select multiple class="form-control" name="{{ form.specialites_culinaires.name }}">
+            {% for cuisine in form.specialites_culinaires.choices %}
+                <option value="{{ cuisine.0 }}">{{ cuisine.1 }}</option>
+            {% endfor %}
+        </select>-->
+        <input type="text" class="form-control mt-2" name="nouvelle_cuisine" placeholder="Nouvelle cuisine">
+    </div>
+    <button type="submit" class="btn btn-primary">Ajouter</button>
+</form>
+{% endblock %}

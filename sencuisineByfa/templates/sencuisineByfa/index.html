@@ -1,0 +1,14 @@
+{% extends "sencuisineByfa/header.html" %}
+{% block title %}
+    Accueil
+{% endblock %}
+{% block content %}
+
+ <h2>Cuisines</h2>
+ <ul>
+     {% for cuisine in cuisines %}
+         <li>{{ cuisine.nom }}</li>
+     {% endfor %}
+ </ul>
+ 
+{% endblock %}

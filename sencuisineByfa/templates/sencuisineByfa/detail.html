@@ -1,0 +1,17 @@
+{% extends 'sencuisineByfa/header.html'%}
+{% block title %}
+    Detail Recettes
+{% endblock %}
+{% block content %}
+
+<h1>{{ recette.nom }}</h1>
+    <p>{{ recette.description }}</p>
+    <p>Portions : {{ recette.portions }}</p>
+    <h2>Ingrédients :</h2>
+    <ul>
+        {% for ingredient in recette.ingredients.all %}
+            <li>{{ ingredient.nom }} - {{ ingredient.quantite }} {{ ingredient.unite_mesure }}</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
